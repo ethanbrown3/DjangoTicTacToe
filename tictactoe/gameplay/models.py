@@ -9,6 +9,7 @@ GAME_STATUS_CHOICES = (
     ('D', 'Draw')
 )
 
+
 class Game(models.Model):
     first_player = models.ForeignKey(User,
                                      related_name="games_first_player",
@@ -22,6 +23,7 @@ class Game(models.Model):
 
     def __str__(self):
         return f"{self.first_player} vs {self.second_player}"
+
 
 class Move(models.Model):
     x = models.IntegerField()
