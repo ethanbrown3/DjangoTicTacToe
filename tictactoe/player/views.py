@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from gameplay.models import Game
+
 
 def home(request):
     """
@@ -7,4 +9,5 @@ def home(request):
     :param request:
     :return:
     """
-    return render(request, "player/home.html")
+    return render(request, "player/home.html",
+                  {'ngames': Game.objects.count()})
