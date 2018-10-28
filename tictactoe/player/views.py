@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from gameplay.models import Game
 
 
+@login_required
 def home(request):
     """
     Render player home page
