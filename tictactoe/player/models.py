@@ -4,7 +4,20 @@ from django.contrib.auth.models import User
 
 
 class Invitation(models.Model):
-    from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='invitations_sent')
-    to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='invitations_received')
-    message = models.CharField(max_length=300)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    from_user = models.ForeignKey(
+        User,
+        related_name='invitations_sent',
+        on_delete=models.CASCADE
+    )
+    to_user = models.ForeignKey(
+        User,
+        related_name='invitations_received',
+        help_text='Please select the user you want to play a game with.',
+        on_delete=models.CASCADE,
+    )
+    message = models.CharField(
+        max_length=300,
+        blank=True,
+        verbose_name='Optional Message',
+        help_text='Send a friendly message.',
+    )
