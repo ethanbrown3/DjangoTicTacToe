@@ -19,7 +19,7 @@ class GamesQuerySet(models.QuerySet):
     def games_for_user(self, user):
 
         return self.filter(
-            Q(first_player=user) |  Q(second_player=user)
+            Q(first_player=user) | Q(second_player=user)
         )
 
     def active(self):
